@@ -109,13 +109,6 @@ Implements post-processing to:
 - Select best answers based on combined start/end scores
 - Calculate SQuAD metrics (Exact Match and F1)
 
-## Project Structure
-
-```
-.
-├── DistilBERT_Fine_Tuned_on_SQuAD.ipynb  # Main notebook
-└── README.md                              # This file
-```
 
 ## How It Works
 
@@ -144,18 +137,6 @@ Percentage of predictions that match the ground truth answer exactly (after norm
 ### F1 Score
 Measures the average overlap between predicted and ground truth answers at the token level.
 
-## Hardware Requirements
-
-- **Minimum**: CPU with 8GB RAM (slow training)
-- **Recommended**: GPU with 12GB+ VRAM or TPU
-- **Optimal**: Google Colab with TPU runtime
-
-## Training Time
-
-- **TPU**: ~30-45 minutes for 3 epochs
-- **GPU (T4)**: ~1-2 hours for 3 epochs
-- **CPU**: Several hours (not recommended)
-
 ## Customization
 
 ### Adjusting Hyperparameters
@@ -180,42 +161,3 @@ Replace the model name:
 model = AutoModelForQuestionAnswering.from_pretrained("bert-base-uncased")
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 ```
-
-## Troubleshooting
-
-### Out of Memory Errors
-- Reduce `per_device_train_batch_size`
-- Reduce `max_length` in tokenization
-- Use gradient accumulation
-
-### Slow Training
-- Enable GPU/TPU acceleration
-- Increase batch size if memory allows
-- Use mixed precision training (fp16)
-
-## References
-
-- [DistilBERT Paper](https://arxiv.org/abs/1910.01108)
-- [SQuAD Dataset](https://rajpurkar.github.io/SQuAD-explorer/)
-- [Hugging Face Transformers](https://huggingface.co/docs/transformers/)
-- [Question Answering Guide](https://huggingface.co/docs/transformers/tasks/question_answering)
-
-## License
-
-This project is for educational purposes. Please refer to the licenses of the underlying models and datasets:
-- DistilBERT: Apache 2.0
-- SQuAD Dataset: CC BY-SA 4.0
-
-## Acknowledgments
-
-- Hugging Face for the Transformers library and model hosting
-- Stanford NLP for the SQuAD dataset
-- Google for Colab and TPU resources
-
-## Author
-
-Created as a demonstration of fine-tuning transformer models for question answering tasks.
-
----
-
-**Note**: This notebook is designed to run in Google Colab with TPU/GPU acceleration for optimal performance.
